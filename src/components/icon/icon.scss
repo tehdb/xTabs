@@ -1,0 +1,20 @@
+:host {
+  display: inline-block;
+
+  i {
+    width: 18px;
+    height: 18px;
+
+    display: inline-block;
+    opacity: 1;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    // fill: inherit;
+    fill: #E0E0E1;
+  }
+}
+
+

@@ -1,0 +1,19 @@
+{
+	"manifest_version": 2,
+	"name": "xTabs — sidebar tabs",
+	"description": "tbd...",
+	"version": "1.0",
+	"background": {
+		"scripts": ["background.js"]
+	},
+	"permissions": ["tabs"],
+	"browser_action": {
+		"default_icon": "icons/baseline_tab_black_18dp_x2.png",
+		"default_title": "xTabs"
+	},
+  "sidebar_action": {
+		"default_icon": "icons/baseline_tab_black_18dp_x2.png",
+	  "default_title": "xTabs",
+	  "default_panel": "dist/sidebar-panel.html"
+  }
+}

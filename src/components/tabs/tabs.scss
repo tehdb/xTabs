@@ -1,0 +1,93 @@
+
+.tabs {
+
+  list-style: none;
+  padding: 0px;
+  font-size: 0.8rem;
+
+  .tab {
+    user-select: none;
+    display: flex;
+    align-items: center;
+    color: #E0E0E1;
+    padding: 4px 4px 4px 0;
+    cursor: pointer;
+    border-radius: 4px;
+
+    .fav-icon {
+      display: inline-flex;
+      width: 18px;
+      height: 18px;
+      // background: #606063;
+      // border-radius: 4px;
+      margin-left: 4px;
+      margin-right: 4px;
+      flex-shrink: 0;
+      box-sizing: border-box;
+    }
+
+    span {
+      margin-left: 6px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      flex-grow: 1;
+    }
+
+    button {
+      width: 18px;
+      height: 18px;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      padding: 0;
+      background: none;
+      box-sizing: border-box;
+      margin-left: 4px;
+      margin-right: 4px;
+      outline: none;
+
+      x-icon {
+        width: 18px;
+        height: 18px;
+      }
+
+      &.close-btn {
+        display: none;
+      }
+
+      &.mute-btn {
+        display: none;
+
+        &--muted {
+          display: inline-flex;
+        }
+      }
+    }
+
+
+    &:hover {
+      background: #606063;
+      cursor: default;
+
+      .fav-icon {
+        display: none;
+      }
+
+      .close-btn,
+      .mute-btn {
+        display: inline-flex;
+      }
+
+    } // :hover
+
+    &.active {
+      background: #606063;
+      cursor: default;
+
+      // pointer-events: none;
+    } // .active
+
+  } // tab
+
+}
