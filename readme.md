@@ -3,6 +3,8 @@ xTabs - opera sidebar tabs extension
 
 Description tbd...
 
+![screenshot](https://github.com/tehdb/xTabs/raw/master/images/screenshot.png)
+
 ## Prerequisites
 
 [Opera Browser](https://www.opera.com) ≥ v65.x
