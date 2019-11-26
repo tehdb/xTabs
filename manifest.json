@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "xTabs — sidebar tabs",
 	"description": "tbd...",
-	"version": "1.0",
+	"version": "0.1",
 	"background": {
 		"scripts": ["background.js"]
 	},

@@ -1,4 +1,4 @@
-import { Component, h, State, Element } from '@stencil/core';
+import { Component, h, State, Element, Listen } from '@stencil/core';
 import {
   append,
   update,
@@ -9,7 +9,11 @@ import {
   map,
   lensProp,
   prop,
-  sortBy
+  sortBy,
+  clone,
+  filter,
+  includes,
+  toLower
 } from 'ramda';
 import {
   getTabs,
@@ -31,8 +35,10 @@ import {
 export class Tabs  {
 
   private activeTabId: number;
+  private originalTabs: chrome.tabs.Tab[] | null = null;
 
   @Element() el: HTMLElement;
+
   @State() tabs: chrome.tabs.Tab[];
 
   constructor() {
@@ -80,8 +86,24 @@ export class Tabs  {
 
 
 
+  @Listen('search-change')
+  onSearchChange({ detail }: CustomEvent) {
+    if (detail.length >= 3) {
+      this.tabs = filter((t: chrome.tabs.Tab) => includes(toLower(detail), toLower(t.title)), this.tabs);
+    } else {
+      this.tabs = this.originalTabs;
+    }
+
+  }
+
+  @Listen('search-clear')
+  onSearchClear() {
+    this.tabs = this.originalTabs;
+  }
+
   sortTabs(tabs: chrome.tabs.Tab[]) {
-     this.tabs = sortBy(prop('index'))(tabs);
+    this.tabs = sortBy(prop('index'))(tabs);
+    this.originalTabs = clone(this.tabs);
   } // sortTabs
 
 
@@ -121,6 +143,7 @@ export class Tabs  {
     const cssTab = `tab ${tab.active ? 'active' : ''}`;
     const cssMuteBtn = `mute-btn ${(tab.mutedInfo.muted === true) ? 'mute-btn--muted' : ''}`;
 
+
     return (
       <li class={cssTab} onClick={(e) => this.onActivateTab(e, tab.id)} >
         <x-img class="fav-icon" src={tab.favIconUrl} ></x-img>
@@ -128,6 +151,8 @@ export class Tabs  {
           <x-icon name="cancel"></x-icon>
         </button>
         <span>{tab.title}</span>
+
+        { tab.pinned && <x-icon class='pin-icon' name='first-page'></x-icon> }
 
         <button class={cssMuteBtn} onClick={(e) => this.onToggleMute(e, tab.id)} >
           { (tab.mutedInfo.muted === true)
@@ -143,9 +168,9 @@ export class Tabs  {
 
   render() {
     return [
-      // <div class="top-bar">
-      //   <x-search></x-search>
-      // </div>,
+      <div class="top-bar">
+        <x-search></x-search>
+      </div>,
       <ul class="tabs">
         {this.tabs.map((tab: chrome.tabs.Tab) => this.renderTab(tab))}
       </ul>

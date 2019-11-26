@@ -6,6 +6,10 @@ import IconCancel from 'material-design-icons/navigation/svg/production/ic_cance
 import IconVolumeUp from 'material-design-icons/av/svg/production/ic_volume_up_48px.svg';
 import IconVolumeOff from 'material-design-icons/av/svg/production/ic_volume_off_48px.svg';
 import IconBrokenImage from 'material-design-icons/image/svg/production/ic_broken_image_48px.svg';
+import IconFirstPage from 'material-design-icons/navigation/svg/production/ic_first_page_48px.svg';
+import IconSearch from 'material-design-icons/action/svg/production/ic_search_48px.svg';
+import IconClose from 'material-design-icons/navigation/svg/production/ic_close_48px.svg';
+
 // Custom Icons
 // import IconAdd from './icons/xac.svg';
 
@@ -17,9 +21,12 @@ import IconBrokenImage from 'material-design-icons/image/svg/production/ic_broke
 export class Icon {
   private icons = {
     cancel: Icon.base64toSVG(IconCancel),
-    'volume-up': Icon.base64toSVG(IconVolumeUp),
+    'broken-image': Icon.base64toSVG(IconBrokenImage),
+    'first-page': Icon.base64toSVG(IconFirstPage),
+    'search': Icon.base64toSVG(IconSearch),
     'volume-off': Icon.base64toSVG(IconVolumeOff),
-    'broken-image': Icon.base64toSVG(IconBrokenImage)
+    'volume-up': Icon.base64toSVG(IconVolumeUp),
+    'close': Icon.base64toSVG(IconClose),
   };
   @Prop({ reflectToAttr: true }) name: string;
   @Prop({ reflectToAttr: true }) color: string;

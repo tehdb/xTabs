@@ -69,7 +69,10 @@ declare namespace LocalJSX {
     'cls'?: string;
     'src'?: string;
   }
-  interface XSearch {}
+  interface XSearch {
+    'onSearch-change'?: (event: CustomEvent<any>) => void;
+    'onSearch-clear'?: (event: CustomEvent<any>) => void;
+  }
   interface XTabs {}
 
   interface IntrinsicElements {

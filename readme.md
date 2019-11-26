@@ -27,14 +27,12 @@ yarn dev
 
 ## ToDo's
 
-- search tabs
-- filter tabs
+- ~~search tabs~~
 - sort tabs
 - reorder by drag and drop
 - grouping tabs
 - theming (dark/light os specific)
-- mark tabs with audio
+- ~~mark pinned tabs~~
 - mute/unmute all tabs
-- mark pinned tabs
 - mark tabs with audio
 
